@@ -15,7 +15,7 @@ public class DataInjector {
 		return listNbrey;
 	}
 	
-	public void setListNbre(){
+	public void setListNbrex(){
 		listNbrex.add(186);
 		listNbrex.add(699);
 		listNbrex.add(132);
@@ -40,4 +40,5 @@ public class DataInjector {
 		listNbrey.add(38.8);
 		listNbrey.add(138.2);
 	}
+
 }

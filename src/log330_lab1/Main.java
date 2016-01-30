@@ -9,27 +9,37 @@ public class Main {
 	public static void main(String[] args) {
 		DataInjector dataInjector = new DataInjector();
 		
-		ArrayList<Integer> data = new ArrayList<Integer>();
+		ArrayList<Integer> datax = new ArrayList<Integer>();
+		ArrayList<Double> datay = new ArrayList<Double>();
 		
-		dataInjector.setListNbre();
-		data = dataInjector.getListNbre();
+		dataInjector.setListNbrex();
+		dataInjector.setListNbrey();
+		datax = dataInjector.getListNbrex();
+		datay = dataInjector.getListNbrey();
 		
-		Calculate avg = new CalculateMoyenne(data);
+		/*TP1
+		Calculate avg = new CalculateMoyenne(datax);
 		double resultavg = avg.calculate();
 		System.out.println("moyenne: "+resultavg);
 		
-		Calculate distance = new CalculateDistance(data, resultavg);
+		Calculate distance = new CalculateDistance(datax, resultavg);
 		double sommeDistance = distance.calculate();
 		System.out.println("somme distance: "+sommeDistance);
 		
-		Calculate variance = new CalculateVariance(data, sommeDistance);
+		Calculate variance = new CalculateVariance(datax, sommeDistance);
 		double resultVariance = variance.calculate();
 		System.out.println("Variance: "+resultVariance);
 		
 		Calculate ecartType = new CalculateEcartType(resultVariance);
 		double resultEcartType = ecartType.calculate();
 		
-		System.out.println("Ecart-type: "+resultEcartType);
+		System.out.println("Ecart-type: "+resultEcartType);*/
+		
+		/*TP2*/
+		Calculate correlation = new CalculateCorrelation(datax, datay);
+		double resultCorrelation = correlation.calculate();
+		System.out.println("Correlation: "+resultCorrelation);
+		System.out.println("Correlation au carré: "  + Math.pow(resultCorrelation,2));
 
 	}
 
