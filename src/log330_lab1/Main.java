@@ -10,7 +10,7 @@ public class Main {
 		DataInjector dataInjector = new DataInjector();
 		
 		ArrayList<Integer> datax = new ArrayList<Integer>();
-		ArrayList<Double> datay = new ArrayList<Double>();
+		ArrayList<Integer> datay = new ArrayList<Integer>();
 		
 		dataInjector.setListNbrex();
 		dataInjector.setListNbrey();
@@ -43,8 +43,7 @@ public class Main {
 		/*TP3*/
 		Calculate regression = new CalculateRegressionLineaire(datax, datay);
 		double resultRegression = regression.calculate();
-		System.out.println("Regression: "+resultRegression);
-		System.out.println("Regression: "+resultRegression);
+
 
 	}
 

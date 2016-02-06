@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class DataInjector {
 
 	ArrayList<Integer> listNbrex = new ArrayList<Integer>();
-	ArrayList<Double> listNbrey = new ArrayList<Double>();
+	ArrayList<Integer> listNbrey = new ArrayList<Integer>();
 	
 	public ArrayList<Integer> getListNbrex(){
 		return listNbrex;
 	}
 	
-	public ArrayList<Double> getListNbrey(){
+	public ArrayList<Integer> getListNbrey(){
 		return listNbrey;
 	}
 	
@@ -29,16 +29,16 @@ public class DataInjector {
 	}
 	
 	public void setListNbrey(){
-		listNbrey.add(186.0);
-		listNbrey.add(699.0);
-		listNbrey.add(132.0);
-		listNbrey.add(272.0);
-		listNbrey.add(291.0);
-		listNbrey.add(331.0);
-		listNbrey.add(199.0);
-		listNbrey.add(1890.0);
-		listNbrey.add(788.0);
-		listNbrey.add(1601.0);
+		listNbrey.add(186);
+		listNbrey.add(699);
+		listNbrey.add(132);
+		listNbrey.add(272);
+		listNbrey.add(291);
+		listNbrey.add(331);
+		listNbrey.add(199);
+		listNbrey.add(1890);
+		listNbrey.add(788);
+		listNbrey.add(1601);
 	}
 
 }

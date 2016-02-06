@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class CalculateRegressionLineaire implements Calculate {
 
 	ArrayList<Integer> datax = new ArrayList<Integer>();	
-	ArrayList<Double> datay = new ArrayList<Double>();	
+	ArrayList<Integer> datay = new ArrayList<Integer>();	
 
-	public CalculateRegressionLineaire(ArrayList<Integer> datax, ArrayList<Double> datay){
+	public CalculateRegressionLineaire(ArrayList<Integer> datax, ArrayList<Integer> datay){
 		this.datax = datax;
 		this.datay = datay;
 	}
@@ -20,8 +20,15 @@ public class CalculateRegressionLineaire implements Calculate {
 	}
 
 	private double calculConstante() {
-		// TODO Auto-generated method stub
-		return 0;
+		Calculate moyenney = new CalculateMoyenne(datay);
+		double resulty = moyenney.calculate();
+		
+		Calculate moyennex = new CalculateMoyenne(datax);
+		double resultx = moyennex.calculate();
+		
+		
+		System.out.println("B0: " + (resulty - (calculPente() * resultx)));
+		return resulty - (calculPente() * resultx);
 	}
 
 	private double calculPente() {
@@ -30,6 +37,7 @@ public class CalculateRegressionLineaire implements Calculate {
 		int sommeXauCarre = sommeXauCarre();
 		int nFoisSommeXcaree = nFoisSommeXcaree();
 
+		System.out.println("B1: "+ (sommeXFoisSommeY - xFoisYFoisN) / (sommeXauCarre - nFoisSommeXcaree));
 		return (sommeXFoisSommeY - xFoisYFoisN) / (sommeXauCarre - nFoisSommeXcaree);
 	}
 
@@ -55,7 +63,7 @@ public class CalculateRegressionLineaire implements Calculate {
 		int result = 0;
 
 		for(int i=0;i<datax.size();i++)
-			result += (datax.get(i) + datay.get(i));
+			result += (datax.get(i) * datay.get(i));
 
 		return datax.size() * result;
 	}
