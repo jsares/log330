@@ -33,13 +33,18 @@ public class Main {
 		Calculate ecartType = new CalculateEcartType(resultVariance);
 		double resultEcartType = ecartType.calculate();
 		
-		System.out.println("Ecart-type: "+resultEcartType);*/
+		System.out.println("Ecart-type: "+resultEcartType);
 		
-		/*TP2*/
 		Calculate correlation = new CalculateCorrelation(datax, datay);
 		double resultCorrelation = correlation.calculate();
 		System.out.println("Correlation: "+resultCorrelation);
-		System.out.println("Correlation au carré: "  + Math.pow(resultCorrelation,2));
+		System.out.println("Correlation au carré: "  + Math.pow(resultCorrelation,2));*/
+		
+		/*TP3*/
+		Calculate regression = new CalculateRegressionLineaire(datax, datay);
+		double resultRegression = regression.calculate();
+		System.out.println("Regression: "+resultRegression);
+		System.out.println("Regression: "+resultRegression);
 
 	}
 
