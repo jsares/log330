@@ -1,4 +1,10 @@
 package log330_lab1;
+/*
+ * Jean-Sébastien Arès, LOG330 TP4
+ * Desc:Classe qui injecte les données du fichier excel
+ *  dans 2 tableaux (x et y)
+ * 
+ * */
 
 import java.util.ArrayList;
 

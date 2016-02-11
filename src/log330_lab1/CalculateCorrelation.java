@@ -1,4 +1,11 @@
 package log330_lab1;
+/*
+ * Jean-Sébastien Arès, LOG330 TP4
+ * Desc: Contient les fonctions nécessaire pour
+ * calculer la correlation, implémente Calculate
+ * 
+ * */
+
 
 import java.util.ArrayList;
 
