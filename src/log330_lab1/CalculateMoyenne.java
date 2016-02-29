@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 public class CalculateMoyenne implements Calculate {
 
-	ArrayList<Integer> data = new ArrayList<Integer>();	
+	ArrayList<Double> data = new ArrayList<Double>();	
 	
 	public CalculateMoyenne(){}
-	public CalculateMoyenne(ArrayList<Integer> data){
+	public CalculateMoyenne(ArrayList<Double> data){
 		this.data = data;
 	}
 
@@ -20,7 +20,7 @@ public class CalculateMoyenne implements Calculate {
 	public double calculate() {
 		double resultSomme;
 		resultSomme = somme();
-		return resultSomme * (1.0/(double)this.data.size());
+		return resultSomme * (1.0/this.data.size());
 	}
 	private int somme() {
 

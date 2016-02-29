@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 public class CalculateRegressionLineaire implements Calculate {
 
-	ArrayList<Integer> datax = new ArrayList<Integer>();	
-	ArrayList<Integer> datay = new ArrayList<Integer>();	
+	ArrayList<Double> datax = new ArrayList<Double>();	
+	ArrayList<Double> datay = new ArrayList<Double>();	
 
-	public CalculateRegressionLineaire(ArrayList<Integer> datax, ArrayList<Integer> datay){
+	public CalculateRegressionLineaire(ArrayList<Double> datax, ArrayList<Double> datay){
 		this.datax = datax;
 		this.datay = datay;
 	}
@@ -20,6 +20,7 @@ public class CalculateRegressionLineaire implements Calculate {
 	@Override
 	public double calculate() {
 		double calculPente = calculPente();
+		System.out.println("B1: "+ calculPente);
 		double calculConstante = calculConstante();
 		return 0;
 	}
@@ -42,7 +43,6 @@ public class CalculateRegressionLineaire implements Calculate {
 		int sommeXauCarre = sommeXauCarre();
 		int nFoisSommeXcaree = nFoisSommeXcaree();
 
-		System.out.println("B1: "+ (sommeXFoisSommeY - xFoisYFoisN) / (sommeXauCarre - nFoisSommeXcaree));
 		return (sommeXFoisSommeY - xFoisYFoisN) / (sommeXauCarre - nFoisSommeXcaree);
 	}
 

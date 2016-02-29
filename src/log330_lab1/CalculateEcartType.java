@@ -1,7 +1,5 @@
 package log330_lab1;
 
-import java.util.ArrayList;
-
 public class CalculateEcartType implements Calculate {
 	
 	double variance = 0.0;

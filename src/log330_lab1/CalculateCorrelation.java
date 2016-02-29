@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class CalculateCorrelation implements Calculate {
 
-	ArrayList<Integer> datax = new ArrayList<Integer>();	
+	ArrayList<Double> datax = new ArrayList<Double>();	
 	ArrayList<Double> datay = new ArrayList<Double>();	
 	
-	public CalculateCorrelation(ArrayList<Integer> datax, ArrayList<Double> datay){
+	public CalculateCorrelation(ArrayList<Double> datax, ArrayList<Double> datay){
 		this.datax = datax;
 		this.datay = datay;
 	}
