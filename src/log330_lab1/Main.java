@@ -122,6 +122,16 @@ public class Main {
 		/*TP3*/
 		Calculate regression = new CalculateRegressionLineaire(sommeHeure, noteIntra);
 		double resultRegression = regression.calculate();
+		
+		System.out.println("*******Interprétation de la corrélation *********");
+		if(resultCorrelation <= 0.25)
+			System.out.println("La corrélation entre l'effort et la note à l'intra n'est pas forte (<0.25)");
+		else if(resultCorrelation <= 0.50)
+			System.out.println("La corrélation entre l'effort et la note à l'intra est plus ou moin bonne (<0.50)");
+		else if(resultCorrelation <= 1.0)
+			System.out.println("La corrélation entre l'effort et la note à l'intra est très forte (a peu près 1.0)");
+		
+		
 
 	}
 
