@@ -13,6 +13,7 @@ public class CalculateCorrelation implements Calculate {
 
 	ArrayList<Double> datax = new ArrayList<Double>();	
 	ArrayList<Double> datay = new ArrayList<Double>();	
+	double result = 0.0;
 	
 	public CalculateCorrelation(ArrayList<Double> datax, ArrayList<Double> datay){
 		this.datax = datax;
@@ -25,8 +26,12 @@ public class CalculateCorrelation implements Calculate {
 		double sommexFoisSommey = sommexFoisSommey();
 		double soustractionDeSommeCarrex = soustractionDeSommeCarrex();
 		double soustractionDeSommeCarrey = soustractionDeSommeCarrey();
-		
-		return ((xfoisy)-(sommexFoisSommey))/Math.sqrt(((soustractionDeSommeCarrex)*(soustractionDeSommeCarrey)));
+		this.result = ((xfoisy)-(sommexFoisSommey))/Math.sqrt(((soustractionDeSommeCarrex)*(soustractionDeSommeCarrey)));
+		return result;
+	}
+	public double calculateCorrelationAuCarre(){
+	
+		return Math.pow(this.result, 2);
 	}
 
 	private double soustractionDeSommeCarrey() {
@@ -68,13 +73,13 @@ public class CalculateCorrelation implements Calculate {
 	}
 
 	private double xfoisy() {
-		double result = 0.0;
+		double resultat = 0.0;
 		int i=0;
 			for(int j=0;j<datay.size();j++){
-				result += datax.get(i) * datay.get(j);
+				resultat += datax.get(i) * datay.get(j);
 				i++;
 			}
-		return datax.size() * result;
+		return datax.size() * resultat;
 	}
 
 }

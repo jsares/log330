@@ -2,6 +2,8 @@ package log330_lab1;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /*
@@ -27,50 +29,7 @@ public class Main {
 		int nbreNotes = 6;
 		try
 		{
-			FileInputStream file = new FileInputStream(new File("test.xlsx"));
-
-			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(file);
-
-			//Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
-
-			//Iterate through each rows one by one
-			Iterator<Row> rowIterator = sheet.iterator();
-			while (rowIterator.hasNext()) 
-			{
-				Row row = rowIterator.next();
-				//For each row, iterate through all the columns
-				Iterator<Cell> cellIterator = row.cellIterator();
-
-				datax = new ArrayList<Double>();
-				while (cellIterator.hasNext()) 
-				{
-					Cell cell = cellIterator.next();
-					//Check the cell type and format accordingly
-					switch (cell.getCellType()) 
-					{
-					case Cell.CELL_TYPE_NUMERIC:
-						if(datax.size()<nbreNotes){
-							datax.add(cell.getNumericCellValue());
-						}
-						else if(datax.size()==nbreNotes){
-							double result = 0;
-							for(int i=0; i<datax.size();i++)
-								result += datax.get(i);
-							sommeHeure.add(result);
-							noteIntra.add(cell.getNumericCellValue());
-						}
-						
-							
-							
-						break;
-					case Cell.CELL_TYPE_STRING:
-						break;
-					}
-				}
-			}
-			file.close();
+			getDonnees(sommeHeure, noteIntra, nbreNotes);
 
 				
 		} 
@@ -114,16 +73,16 @@ public class Main {
 
 		System.out.println("Ecart-type: "+resultEcartType);
 		 */
-		Calculate correlation = new CalculateCorrelation(sommeHeure, noteIntra);
+		CalculateCorrelation correlation = new CalculateCorrelation(sommeHeure, noteIntra);
 		double resultCorrelation = correlation.calculate();
 		System.out.println("Correlation: "+resultCorrelation);
-		System.out.println("Correlation au carré: "  + Math.pow(resultCorrelation,2));
+		System.out.println("Correlation au carré: "  + correlation.calculateCorrelationAuCarre());
 
 		/*TP3*/
 		Calculate regression = new CalculateRegressionLineaire(sommeHeure, noteIntra);
 		double resultRegression = regression.calculate();
 		
-		System.out.println("*******Interprétation de la corrélation *********");
+		System.out.println("\n*******Interprétation de la corrélation *********");
 		if(resultCorrelation <= 0.25)
 			System.out.println("La corrélation entre l'effort et la note à l'intra n'est pas forte (<0.25)");
 		else if(resultCorrelation <= 0.50)
@@ -133,6 +92,55 @@ public class Main {
 		
 		
 
+	}
+
+	private static void getDonnees(ArrayList<Double> sommeHeure, ArrayList<Double> noteIntra, int nbreNotes)
+			throws FileNotFoundException, IOException {
+		ArrayList<Double> datax;
+		FileInputStream file = new FileInputStream(new File("test.xlsx"));
+
+		//Create Workbook instance holding reference to .xlsx file
+		XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+		//Get first/desired sheet from the workbook
+		XSSFSheet sheet = workbook.getSheetAt(0);
+
+		//Iterate through each rows one by one
+		Iterator<Row> rowIterator = sheet.iterator();
+		while (rowIterator.hasNext()) 
+		{
+			Row row = rowIterator.next();
+			//For each row, iterate through all the columns
+			Iterator<Cell> cellIterator = row.cellIterator();
+
+			datax = new ArrayList<Double>();
+			while (cellIterator.hasNext()) 
+			{
+				Cell cell = cellIterator.next();
+				//Check the cell type and format accordingly
+				switch (cell.getCellType()) 
+				{
+				case Cell.CELL_TYPE_NUMERIC:
+					if(datax.size()<nbreNotes){
+						datax.add(cell.getNumericCellValue());
+					}
+					else if(datax.size()==nbreNotes){
+						double result = 0;
+						for(int i=0; i<datax.size();i++)
+							result += datax.get(i);
+						sommeHeure.add(result);
+						noteIntra.add(cell.getNumericCellValue());
+					}
+					
+						
+						
+					break;
+				case Cell.CELL_TYPE_STRING:
+					break;
+				}
+			}
+		}
+		file.close();
 	}
 
 	
