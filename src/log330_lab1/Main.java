@@ -79,8 +79,13 @@ public class Main {
 		System.out.println("Correlation au carré: "  + correlation.calculateCorrelationAuCarre());
 
 		/*TP3*/
-		Calculate regression = new CalculateRegressionLineaire(sommeHeure, noteIntra);
-		double resultRegression = regression.calculate();
+		CalculateRegressionLineaire regression = new CalculateRegressionLineaire(sommeHeure, noteIntra);
+		double[] resultRegression = regression.calculate();
+		
+		System.out.println("B1: "+ resultRegression[0]);
+		System.out.println("B0: "+ resultRegression[1]);
+		
+		
 		
 		System.out.println("\n*******Interprétation de la corrélation *********");
 		if(resultCorrelation <= 0.25)

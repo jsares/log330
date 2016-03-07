@@ -11,37 +11,37 @@ import org.omg.PortableInterceptor.SUCCESSFUL;
 
 public class CalculateCorrelationTest {
 
+	ArrayList<Double> datax = new ArrayList<Double>();
+	ArrayList<Double> datay = new ArrayList<Double>();
+	
 	private ArrayList<Double> getListeX(){
 		
-		ArrayList<Double> datax = new ArrayList<Double>();	
+		ArrayList<Double> data = new ArrayList<Double>();	
 		
-		datax.add(2.1);
-		datax.add(87.0);
-		datax.add(45.0);
-		datax.add(56.0);
-		datax.add(4.0);
+		data.add(2.1);
+		data.add(87.0);
+		data.add(45.0);
+		data.add(56.0);
+		data.add(4.0);
 		
-		return datax;
+		return data;
 	}
 	
 	private ArrayList<Double> getListeY(){
+		ArrayList<Double> data = new ArrayList<Double>();
 		
-		ArrayList<Double> datay = new ArrayList<Double>();
+		data.add(5.2);
+		data.add(78.2);
+		data.add(98.5);
+		data.add(58.1);
+		data.add(15.7);
 		
-		datay.add(5.2);
-		datay.add(78.2);
-		datay.add(98.5);
-		datay.add(58.1);
-		datay.add(15.7);
-		
-		return datay;
+		return data;
 	}
+	
 
 	@Test
 	public void deuxListMemeNbreDeDonnees() {
-		
-		ArrayList<Double> datax = new ArrayList<Double>();
-		ArrayList<Double> datay = new ArrayList<Double>();
 
 		datax = getListeX();
 		datay = getListeY();
@@ -54,9 +54,6 @@ public class CalculateCorrelationTest {
 
 	@Test
 	public void correlationRacineCarreeIsPareilqueCorrelationDepart() {
-
-		ArrayList<Double> datax = new ArrayList<Double>();
-		ArrayList<Double> datay = new ArrayList<Double>();
 
 		datax = getListeX();
 		datay = getListeY();
@@ -74,8 +71,6 @@ public class CalculateCorrelationTest {
 	@Test
 	public void correlationIsNotNaN() {
 		
-		ArrayList<Double> datax = new ArrayList<Double>();
-		ArrayList<Double> datay = new ArrayList<Double>();
 		double resultatCorrelation = 0.0;
 
 		datax = getListeX();
@@ -86,5 +81,19 @@ public class CalculateCorrelationTest {
 		
 		assertTrue("Ne peut pas être Nan", !Double.isNaN(resultatCorrelation));
 		
+	}
+	
+	@Test
+	public void regressionLineaireIsCorrect() {
+		double resultatCorrelation = 0.0;
+		double resultatCorrAuCarre = 0.0;
+		datax = getListeX();
+		datay = getListeY();
+		
+		CalculateCorrelation correlation = new CalculateCorrelation(datax, datay);
+		resultatCorrelation = correlation.calculate();
+		resultatCorrAuCarre = correlation.calculateCorrelationAuCarre();
+						
+		assertTrue("Les résultat ne sont pas équivalent.", resultatCorrelation == 0.8032140816632494 && resultatCorrAuCarre == 0.645152860982137);
 	}
 }

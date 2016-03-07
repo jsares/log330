@@ -6,8 +6,9 @@ package log330_lab1;
  * 
  * */
 import java.util.ArrayList;
+import java.util.List;
 
-public class CalculateRegressionLineaire implements Calculate {
+public class CalculateRegressionLineaire {
 
 	ArrayList<Double> datax = new ArrayList<Double>();	
 	ArrayList<Double> datay = new ArrayList<Double>();	
@@ -17,12 +18,16 @@ public class CalculateRegressionLineaire implements Calculate {
 		this.datay = datay;
 	}
 
-	@Override
-	public double calculate() {
+	public double[] calculate() {
+		double[] liste = new double[2];
+		
 		double calculPente = calculPente();
-		System.out.println("B1: "+ calculPente);
 		double calculConstante = calculConstante();
-		return 0;
+		
+		liste[0] = calculPente;
+		liste[1] = calculConstante;
+		
+		return liste;
 	}
 
 	private double calculConstante() {
@@ -32,8 +37,6 @@ public class CalculateRegressionLineaire implements Calculate {
 		Calculate moyennex = new CalculateMoyenne(datax);
 		double resultx = moyennex.calculate();
 		
-		
-		System.out.println("B0: " + (resulty - (calculPente() * resultx)));
 		return resulty - (calculPente() * resultx);
 	}
 
