@@ -1,10 +1,12 @@
-package log330_lab1;
+package log330_labTest;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
+
+import log330_lab1.CalculateRegressionLineaire;
 
 public class CalculateRegressionLineaireTest {
 
@@ -47,14 +49,16 @@ public class CalculateRegressionLineaireTest {
 	}
 	
 	@Test
-	public void regressionLineaireIsCorrect() {
+	public void regressionLineaireIsResultatCorrect() {
 		double[] resultat = new double[2];
 		datax = getListeX();
 		datay = getListeY();
 		
 		CalculateRegressionLineaire regression = new CalculateRegressionLineaire(datax, datay);
 		resultat = regression.calculate();
-						
+		
+		//resultat[0]:B1
+		//resultat[2]:B0
 		assertTrue("Les résultat ne sont pas équivalent.", resultat[0] == 0.887211074519415 && resultat[1] == 16.376210308646698);
 	}
 

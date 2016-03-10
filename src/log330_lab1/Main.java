@@ -27,11 +27,14 @@ public class Main {
 		ArrayList<Double> sommeHeure = new ArrayList<Double>();
 		ArrayList<Double> noteIntra = new ArrayList<Double>();
 		int nbreNotes = 6;
+		String path = "test.xlsx";
+		
 		try
 		{
-			getDonnees(sommeHeure, noteIntra, nbreNotes);
-
-				
+			DataInjector data = new DataInjector(sommeHeure, noteIntra, nbreNotes);
+			data.getDonnees(path);
+			sommeHeure = data._sommeHeure;
+			noteIntra = data._noteIntra;				
 		} 
 		catch (Exception e) 
 		{
@@ -85,8 +88,11 @@ public class Main {
 		System.out.println("B1: "+ resultRegression[0]);
 		System.out.println("B0: "+ resultRegression[1]);
 		
-		
-		
+		afficherResultats(resultCorrelation);
+			
+	}
+
+	private static void afficherResultats(double resultCorrelation) {
 		System.out.println("\n*******Interprétation de la corrélation *********");
 		if(resultCorrelation <= 0.25)
 			System.out.println("La corrélation entre l'effort et la note à l'intra n'est pas forte (<0.25)");
@@ -94,60 +100,6 @@ public class Main {
 			System.out.println("La corrélation entre l'effort et la note à l'intra est plus ou moin bonne (<0.50)");
 		else if(resultCorrelation <= 1.0)
 			System.out.println("La corrélation entre l'effort et la note à l'intra est très forte (a peu près 1.0)");
-		
-		
-
 	}
-
-	private static void getDonnees(ArrayList<Double> sommeHeure, ArrayList<Double> noteIntra, int nbreNotes)
-			throws FileNotFoundException, IOException {
-		ArrayList<Double> datax;
-		FileInputStream file = new FileInputStream(new File("test.xlsx"));
-
-		//Create Workbook instance holding reference to .xlsx file
-		XSSFWorkbook workbook = new XSSFWorkbook(file);
-
-		//Get first/desired sheet from the workbook
-		XSSFSheet sheet = workbook.getSheetAt(0);
-
-		//Iterate through each rows one by one
-		Iterator<Row> rowIterator = sheet.iterator();
-		while (rowIterator.hasNext()) 
-		{
-			Row row = rowIterator.next();
-			//For each row, iterate through all the columns
-			Iterator<Cell> cellIterator = row.cellIterator();
-
-			datax = new ArrayList<Double>();
-			while (cellIterator.hasNext()) 
-			{
-				Cell cell = cellIterator.next();
-				//Check the cell type and format accordingly
-				switch (cell.getCellType()) 
-				{
-				case Cell.CELL_TYPE_NUMERIC:
-					if(datax.size()<nbreNotes){
-						datax.add(cell.getNumericCellValue());
-					}
-					else if(datax.size()==nbreNotes){
-						double result = 0;
-						for(int i=0; i<datax.size();i++)
-							result += datax.get(i);
-						sommeHeure.add(result);
-						noteIntra.add(cell.getNumericCellValue());
-					}
-					
-						
-						
-					break;
-				case Cell.CELL_TYPE_STRING:
-					break;
-				}
-			}
-		}
-		file.close();
-	}
-
-	
 
 }

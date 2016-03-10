@@ -1,4 +1,4 @@
-package log330_lab1;
+package log330_labTest;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,9 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.omg.PortableInterceptor.SUCCESSFUL;
+
+import log330_lab1.Calculate;
+import log330_lab1.CalculateCorrelation;
 
 public class CalculateCorrelationTest {
 
@@ -66,21 +69,6 @@ public class CalculateCorrelationTest {
 		resultatCorrelationAuCarre = correlation.calculateCorrelationAuCarre();
 		
 		assertTrue("Correlation et la racine carree de correlation au carree doivent être pareil.", resultatCorrelation == Math.sqrt(resultatCorrelationAuCarre));
-	}
-
-	@Test
-	public void correlationIsNotNaN() {
-		
-		double resultatCorrelation = 0.0;
-
-		datax = getListeX();
-		datay = getListeY();
-		
-		CalculateCorrelation correlation = new CalculateCorrelation(datax, datay);
-		resultatCorrelation = correlation.calculate();
-		
-		assertTrue("Ne peut pas être Nan", !Double.isNaN(resultatCorrelation));
-		
 	}
 	
 	@Test
