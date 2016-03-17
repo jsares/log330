@@ -23,15 +23,15 @@ public class DataInjector {
 	ArrayList<Integer> listNbrex = new ArrayList<Integer>();
 	ArrayList<Integer> listNbrey = new ArrayList<Integer>();
 	
-	ArrayList<Double> _sommeHeure = new ArrayList<Double>();
-	ArrayList<Double> _noteIntra = new ArrayList<Double>();
+	ArrayList<Double> sommeHeure = new ArrayList<Double>();
+	ArrayList<Double> noteIntra = new ArrayList<Double>();
 	int _nbreNotes = 0;
 	
 	public DataInjector(){}
 	
-	public DataInjector(ArrayList<Double> sommeHeure, ArrayList<Double> noteIntra, int nbreNotes){
-		_sommeHeure = sommeHeure;
-		_noteIntra = noteIntra;
+	public DataInjector(ArrayList<Double> _sommeHeure, ArrayList<Double> _noteIntra, int nbreNotes){
+		sommeHeure = _sommeHeure;
+		noteIntra = _noteIntra;
 		_nbreNotes = nbreNotes;
 	}
 	
@@ -102,8 +102,8 @@ public class DataInjector {
 						double result = 0;
 						for(int i=0; i<datax.size();i++)
 							result += datax.get(i);
-						_sommeHeure.add(result);
-						_noteIntra.add(cell.getNumericCellValue());
+						sommeHeure.add(result);
+						noteIntra.add(cell.getNumericCellValue());
 					}
 					
 						

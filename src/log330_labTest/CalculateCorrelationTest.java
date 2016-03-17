@@ -51,6 +51,7 @@ public class CalculateCorrelationTest {
 		
 		Calculate correlation = new CalculateCorrelation(datax, datay);
 		
+		//ecrire une méthode qui vérifie les deux liste dans datainjector
 		if(datax.size() != datay.size())
 			fail("Liste x doit contenir le même nbre de données que la liste y.");
 	}
