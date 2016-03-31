@@ -55,7 +55,10 @@ public class Main {
 		} 
 		catch (FileNotFoundException fnfe) 
 		{
-			msgErreur = "Le path du fichier spécifié est introuvable";
+			if(path.equals(""))
+				msgErreur = "La path du fichier ne peut être vide.";
+			else
+				msgErreur = "Le path du fichier spécifié est introuvable";
 			System.out.println(msgErreur+"\n");
 		}
 	}
