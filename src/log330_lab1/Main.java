@@ -24,43 +24,52 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		ArrayList<Double> datax = new ArrayList<Double>();
-		ArrayList<Double> _sommeHeure = new ArrayList<Double>();
-		ArrayList<Double> _noteIntra = new ArrayList<Double>();
-		int nbreNotes = 6;
-		String path = "test.xlsx";
-		String msgErreur = "";
-		
-		try
-		
-		{
-			DataInjector data = new DataInjector(_sommeHeure, _noteIntra, nbreNotes);
-			data.getDonnees(path);
-			_sommeHeure = data.sommeHeure;
-			_noteIntra = data.noteIntra;				
+		ArrayList<Double> datay = new ArrayList<Double>();
+		ArrayList<Double> dataz = new ArrayList<Double>();
 
-		CalculateCorrelation correlation = new CalculateCorrelation(_sommeHeure, _noteIntra);
+		DataInjector data = new DataInjector();
+		datax = data.getListNbrex();
+		datay = data.getListNbrey();
+		dataz = data.getListNbrez();
+		double sommeXMoyen = 0.0;
+		double racineCarree = 0.0;
+		double ecartType = 197.896;
+		double result90 = 0.0;
+		double result70 = 0.0;
+		double nbreLigneCode = 900.0;
+		
+		for(int i=0;i<dataz.size();i++)
+			sommeXMoyen += dataz.get(i);
+		
+		racineCarree = Math.sqrt(1+(1/datax.size())+((dataz.get(9))/(sommeXMoyen)));
+		
+		result90 = 1.860 * ecartType * racineCarree;
+		System.out.println("90%: "+ result90);
+		System.out.println("entre "+(nbreLigneCode - result90)+" et "+(nbreLigneCode + result90) + " ligne de codes");
+
+		
+		result70 = 1.108 * ecartType * racineCarree;
+		System.out.println("70%: "+ result70);
+		System.out.println("entre "+(nbreLigneCode - result70)+" et "+(nbreLigneCode + result70) + " ligne de codes");
+		
+		
+		/*data.getDonnees(path);
+		_sommeHeure = data.sommeHeure;
+		_noteIntra = data.noteIntra;				
+
+		/*CalculateCorrelation correlation = new CalculateCorrelation(_sommeHeure, _noteIntra);
 		double resultCorrelation = correlation.calculate();
 		System.out.println("Correlation: "+resultCorrelation);
 		System.out.println("Correlation au carré: "  + correlation.calculateCorrelationAuCarre());
-
+		
 		/*TP3*/
-		CalculateRegressionLineaire regression = new CalculateRegressionLineaire(_sommeHeure, _noteIntra);
+				/*CalculateRegressionLineaire regression = new CalculateRegressionLineaire(_sommeHeure, _noteIntra);
 		double[] resultRegression = regression.calculate();
 		
 		System.out.println("B1: "+ resultRegression[0]);
 		System.out.println("B0: "+ resultRegression[1]);
 		
-		afficherResultats(resultCorrelation);
-			
-		} 
-		catch (FileNotFoundException fnfe) 
-		{
-			if(path.equals(""))
-				msgErreur = "La path du fichier ne peut être vide.";
-			else
-				msgErreur = "Le path du fichier spécifié est introuvable";
-			System.out.println(msgErreur+"\n");
-		}
+		afficherResultats(resultCorrelation);*/
 	}
 
 	private static void afficherResultats(double resultCorrelation) {

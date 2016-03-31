@@ -20,14 +20,19 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DataInjector {
 
-	ArrayList<Integer> listNbrex = new ArrayList<Integer>();
-	ArrayList<Integer> listNbrey = new ArrayList<Integer>();
+	ArrayList<Double> listNbrex = new ArrayList<Double>();
+	ArrayList<Double> listNbrey = new ArrayList<Double>();
+	ArrayList<Double> listNbrez = new ArrayList<Double>();
 	
 	ArrayList<Double> sommeHeure = new ArrayList<Double>();
 	ArrayList<Double> noteIntra = new ArrayList<Double>();
 	int _nbreNotes = 0;
 	
-	public DataInjector(){}
+	public DataInjector(){
+		setListNbrex();
+		setListNbrey();
+		setListNbrez();
+	}
 	
 	public DataInjector(ArrayList<Double> _sommeHeure, ArrayList<Double> _noteIntra, int nbreNotes){
 		sommeHeure = _sommeHeure;
@@ -35,38 +40,54 @@ public class DataInjector {
 		_nbreNotes = nbreNotes;
 	}
 	
-	public ArrayList<Integer> getListNbrex(){
+	public ArrayList<Double> getListNbrex(){
 		return listNbrex;
 	}
 	
-	public ArrayList<Integer> getListNbrey(){
+	public ArrayList<Double> getListNbrey(){
 		return listNbrey;
+	}
+	public ArrayList<Double> getListNbrez(){
+		return listNbrez;
 	}
 	
 	public void setListNbrex(){
-		listNbrex.add(130);
-		listNbrex.add(650);
-		listNbrex.add(99);
-		listNbrex.add(150);
-		listNbrex.add(128);
-		listNbrex.add(302);
-		listNbrex.add(95);
-		listNbrex.add(945);
-		listNbrex.add(368);
-		listNbrex.add(961);
+		listNbrex.add(130.0);
+		listNbrex.add(650.0);
+		listNbrex.add(99.0);
+		listNbrex.add(150.0);
+		listNbrex.add(128.0);
+		listNbrex.add(302.0);
+		listNbrex.add(95.0);
+		listNbrex.add(945.0);
+		listNbrex.add(368.0);
+		listNbrex.add(961.0);
 	}
 	
 	public void setListNbrey(){
-		listNbrey.add(186);
-		listNbrey.add(699);
-		listNbrey.add(132);
-		listNbrey.add(272);
-		listNbrey.add(291);
-		listNbrey.add(331);
-		listNbrey.add(199);
-		listNbrey.add(1890);
-		listNbrey.add(788);
-		listNbrey.add(1601);
+		listNbrey.add(186.0);
+		listNbrey.add(699.0);
+		listNbrey.add(132.0);
+		listNbrey.add(272.0);
+		listNbrey.add(291.0);
+		listNbrey.add(331.0);
+		listNbrey.add(199.0);
+		listNbrey.add(1890.0);
+		listNbrey.add(788.0);
+		listNbrey.add(1601.0);
+	}
+	
+	public void setListNbrez(){
+		listNbrez.add(63907.84);
+		listNbrez.add(71395.84);
+		listNbrez.add(80542.44);
+		listNbrez.add(54195.84);
+		listNbrez.add(64923.04);
+		listNbrez.add(6528.64);
+		listNbrez.add(82828.84);
+		listNbrez.add(316068.84);
+		listNbrez.add(219.04);
+		listNbrez.add(334315.24);
 	}
 	
 	public void getDonnees(String path) throws FileNotFoundException, IOException {
